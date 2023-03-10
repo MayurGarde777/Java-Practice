@@ -8,6 +8,7 @@ public class Practice2 {
         System.out.print("\nEnter number of strings you wants to store in ArrayList : ");
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
+        System.out.print("\nEnter " + n + " Strings : ");
         for(int i=0; i<n; i++)
             names.add(sc.next());
         sc.close();
