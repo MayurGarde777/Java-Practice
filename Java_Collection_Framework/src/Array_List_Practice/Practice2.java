@@ -16,7 +16,6 @@ public class Practice2 {
     }
     public static void main(String args[]) {
         ArrayList <String> name = new ArrayList<String>();
-        name.add("abc");
         //Adding input strings from user through getData method
         name.addAll(getData());
         //Display all Strings 
