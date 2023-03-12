@@ -12,7 +12,7 @@ public class Sine_X {
     public static void main(String[] args) {
         double angle = 0;
         Scanner sc = new Scanner(System.in);
-        System.out.println("\n Enter angle  x (in degree's) : ");
+        System.out.print("\n Enter angle  x (in degree's) : ");
         angle = sc.nextDouble();
         sc.close();
 
