@@ -6,43 +6,52 @@ package Basics_Practice.Math_Functions_Programs;
 
 import java.util.Scanner;
 
-
 public class NthRoot {
     private static double number;
     private static int n;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("\n Enter a number : ");
-        number = sc.nextDouble();
-        System.out.print("\n Enter n (nth root of number) : ");
-        n = sc.nextInt();
-        sc.close();
-        System.out.printf("\nThe nth root of %.3f = %.5f",number, nthRoot(number, n));
-    }
-    
-    public static double nthRoot(double number, int n) {
-        double root = 0, min = 0, max = number, mid, accuracy= 0.0001;
-        while(max > min)
-        {
-            mid = (min + max)/2;
-            double power = 1;
-            for(int i=1; i<=n; i++)
+        char ch = 'y';
+        while (ch == 'y') {
+            System.out.print("\n Enter a number : ");
+            number = sc.nextDouble();
+            System.out.print("\n Enter n (nth root of number) : ");
+            n = sc.nextInt();
+            if(n %2 == 0)
             {
+                if(number < 0)
+                {
+                    sc.close();
+                    System.out.println("\n Even root of negative number not possible.");
+                    return;
+                }
+            }
+            System.out.printf("\nThe nth root of %.3f = %.5f", number, nthRoot(number, n));
+            System.out.print("\n Do you wants to continue? (y/n) : ");
+            sc.nextLine();
+            ch = sc.nextLine().charAt(0);
+        }
+        sc.close();
+    }
+
+    public static double nthRoot(double number, int n) {
+        double root = 0, min = 0, max = number, mid, accuracy = 0.0001;
+        while (max > min) {
+            mid = (min + max) / 2;
+            double power = 1;
+            for (int i = 1; i <= n; i++) {
                 power = power * mid;
             }
-            //mid ^ n = power
-            double difference = (power - number) > 0 ? (power-number) : (number-power);
+            // mid ^ n = power
+            double difference = (power - number) > 0 ? (power - number) : (number - power);
 
-            if(difference > accuracy)
-            {
-                if(power > number)
+            if (difference > accuracy) {
+                if (power > number)
                     max = mid;
                 else
                     min = mid;
-            }
-            else
-            {
+            } else {
                 root = mid;
                 break;
             }

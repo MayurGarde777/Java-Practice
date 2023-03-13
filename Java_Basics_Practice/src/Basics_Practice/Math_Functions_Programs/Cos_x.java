@@ -7,11 +7,12 @@ import java.util.Scanner;
 public class Cos_x {
     public static void main(String[] args) {
         double angle=0, cos_x = 0;
+        char ch = 'y';
         int sign = 1;
         Scanner sc = new Scanner(System.in);
+        while(ch == 'y') {
         System.out.print("Enter an angle (in degree) :  ");
         angle = sc.nextDouble();
-        sc.close();
         double temp = angle;
         if(angle < 0)
             angle = -angle;
@@ -51,13 +52,18 @@ public class Cos_x {
         cos_x = cos_x * sign;
         angle = temp;
         System.out.printf("\n cos(%.2f) = %.3f",angle, cos_x);
+        System.out.printf("\n \n Do you wants to continue? (y/n) : ");
+        sc.nextLine();
+        ch = sc.nextLine().charAt(0);
+    }
+    sc.close();
     }
 
     public static double computeCosx(double angle) {
         double cos_x = 0;
         
         // cos(x) = 1 - (x^2)/2! + (x^4)/4! - (x^6)/6! + ....
-        for(int i=1; i<=15; i++)
+        for(int i=1; i<=10; i++)
         {
             if(i % 2 == 0)
                 cos_x = cos_x - Sine_X.power(angle, (2*i-2))/Sine_X.factorial(2*i - 2); 

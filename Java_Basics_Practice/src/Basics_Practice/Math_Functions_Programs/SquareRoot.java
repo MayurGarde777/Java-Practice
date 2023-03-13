@@ -9,39 +9,42 @@ public class SquareRoot {
 
     public static void main(String[] args) {
         double number, sqrt;
+        char ch = 'y';
         Scanner sc = new Scanner(System.in);
-        System.out.print("Enter a number : ");
-        number = sc.nextDouble();
-        sc.close();
-        if(number < 0)
-        {
-            System.out.println("Square Root of Negative number not possible.");
-            return;
+        while (ch == 'y') {
+            System.out.print("Enter a number : ");
+            number = sc.nextDouble();
+            if (number < 0) {
+                System.out.println("Square Root of Negative number not possible.");
+                sc.close();
+                return;
+            }
+            sqrt = squareRoot(number);
+            System.out.printf("The square root of %.2f = %.4f", number, sqrt);
+            System.out.print("\n \n Do you wants to continue? (y/n) : ");
+            sc.nextLine();
+            ch = sc.nextLine().charAt(0);
         }
-        sqrt = squareRoot(number);
-        System.out.printf("The square root of %.2f = %.4f",number,sqrt);
+        sc.close();
     }
 
     public static double squareRoot(double number) {
 
-        //Finding square root using binary search by everytime checking square of mid with number.
+        // Finding square root using binary search by everytime checking square of mid
+        // with number.
         double sqrt = 0, min, max, mid, accuracy = 0.00001;
         min = 0;
         max = number;
-        while(max > min)
-        {
+        while (max > min) {
             mid = (max + min) / 2;
-            double difference = (mid*mid - number) > 0 ? (mid*mid - number) : (number - mid*mid);
+            double difference = (mid * mid - number) > 0 ? (mid * mid - number) : (number - mid * mid);
 
-            if(difference > accuracy)
-            {
-                if(number > mid*mid)
+            if (difference > accuracy) {
+                if (number > mid * mid)
                     min = mid;
                 else
                     max = mid;
-            }
-            else
-            {
+            } else {
                 sqrt = mid;
                 break;
             }
